@@ -1,28 +1,31 @@
 ## Hello, World!
 
-Now that you’ve installed Rust, it’s time to write your first Rust program.
-It’s traditional when learning a new language to write a little program that
-prints the text `Hello, world!` to the screen, so we’ll do the same here!
+Ora che hai installato Rust, è il momento di scrivere il tuo primo programma
+in Rust. È tradizione quando si impara un nuovo linguaggio di programmazione
+scrivere un piccolo programma che stampa la scritta `Hello, world!` sullo schermo,
+quindi lo faremo anche qui.
 
-> Note: This book assumes basic familiarity with the command line. Rust makes
-> no specific demands about your editing or tooling or where your code lives, so
-> if you prefer to use an integrated development environment (IDE) instead of
-> the command line, feel free to use your favorite IDE. Many IDEs now have some
-> degree of Rust support; check the IDE’s documentation for details. The Rust
-> team has been focusing on enabling great IDE support via `rust-analyzer`. See
-> [Appendix D][devtools]<!-- ignore --> for more details.
+> Nota: Questo libro presume una familiarità di base con la command line. Rust
+> non ha richieste specifiche riguardo il tuo ambiente di sviluppo o agli
+> strumenti che utilizzi, né al luogo in cui il tuo codice risiede. Pertanto,
+> se preferisci utilizzare un ambiente di sviluppo integrato (IDE) invece della
+> command line, sentiti libero di utilizzare il tuo IDE preferito. Molti IDE
+> ora hanno un certo livello di supporto per Rust; consulta la documentazione
+> dell'IDE che utilizzi per ulteriori dettagli. Il team di Rust si è impegneto
+> nell'offrire un ottimo supporto IDE tramite `rust-analyzer`. Per ulteriori
+> dettagli, consulta l'[Appendice D][devtools].
 
-### Creating a Project Directory
+### Creare una Cartella Progetto
 
-You’ll start by making a directory to store your Rust code. It doesn’t matter
-to Rust where your code lives, but for the exercises and projects in this book,
-we suggest making a *projects* directory in your home directory and keeping all
-your projects there.
+Inizierai creando una cartella per mettere il tuo codice Rust da qualche parte.
+A Rust non importa dove il tuo codice è messo, ma per gli esercizi e progetti
+in questo libro, consigliamo di creare una cartella *projects* nella tua cartella
+principale e di tenere tutti i tuoi progetti lì.
 
-Open a terminal and enter the following commands to make a *projects* directory
-and a directory for the “Hello, world!” project within the *projects* directory.
+Apri un terminale ed esegui i seguenti comandi per creare una cartella *projects*
+e un'altra cartella per il progetto "Hello, world!" al suo interno.
 
-For Linux, macOS, and PowerShell on Windows, enter this:
+Per Linux, macOS e PowerShell su Windows, usa questi:
 
 ```console
 $ mkdir ~/projects
@@ -31,7 +34,7 @@ $ mkdir hello_world
 $ cd hello_world
 ```
 
-For Windows CMD, enter this:
+Per il CMD di Windows, usa questi:
 
 ```cmd
 > mkdir "%USERPROFILE%\projects"
@@ -40,16 +43,17 @@ For Windows CMD, enter this:
 > cd hello_world
 ```
 
-### Writing and Running a Rust Program
+### Scrivere ed Eseguire un Programma Rust
 
-Next, make a new source file and call it *main.rs*. Rust files always end with
-the *.rs* extension. If you’re using more than one word in your filename, the
-convention is to use an underscore to separate them. For example, use
-*hello_world.rs* rather than *helloworld.rs*.
+In seguito, crea un nuovo file sorgente chiamato *main.rs*. I file Rust hanno
+sempre l'estensione *.rs*. Se vuoi utilizzare più di una parola nel tuo file
+Rust, lo standard è quello di usare un trattino basso per separarle.
+As esempio, usa *hello_world.rs* invece che *helloworld.rs*
 
-Now open the *main.rs* file you just created and enter the code in Listing 1-1.
+Ora apri il file *main.rs* che hai appena creato e scrivi il codice
+presentato nella Voce 1-1.
 
-<span class="filename">Filename: main.rs</span>
+<span class="filename">Nome file: main.rs</span>
 
 ```rust
 fn main() {
@@ -57,11 +61,11 @@ fn main() {
 }
 ```
 
-<span class="caption">Listing 1-1: A program that prints `Hello, world!`</span>
+<span class="caption">Voce 1-1: Programma che stampa `Hello, world!`</span>
 
-Save the file and go back to your terminal window in the
-*~/projects/hello_world* directory. On Linux or macOS, enter the following
-commands to compile and run the file:
+Salva il file e torna nel terminale nella cartella *~/projects/hello_world*.
+Su Linux o macOS, esegui i seguenti comandi per compilare ed eseguire
+il file.
 
 ```console
 $ rustc main.rs
@@ -69,7 +73,7 @@ $ ./main
 Hello, world!
 ```
 
-On Windows, enter the command `.\main.exe` instead of `./main`:
+Su Windows, esegui il comando `./main.exe` invece che `./main`:
 
 ```powershell
 > rustc main.rs
@@ -77,15 +81,16 @@ On Windows, enter the command `.\main.exe` instead of `./main`:
 Hello, world!
 ```
 
-Regardless of your operating system, the string `Hello, world!` should print to
-the terminal. If you don’t see this output, refer back to the
-[“Troubleshooting”][troubleshooting]<!-- ignore --> part of the Installation
-section for ways to get help.
+Indipendentemente dal tuo sistema operativo, la stringa `Hello, world!` dovrebbe
+essere stata stampata nel terminale. Se non vedi questo output, riferisciti alla
+parte del [“Troubleshooting”][troubleshooting] nella sezione dell'installazione
+per capire il problema.
 
-If `Hello, world!` did print, congratulations! You’ve officially written a Rust
-program. That makes you a Rust programmer—welcome!
+Se invece la stringa `Hello, world!` è stata stampata, cogratulazioni! Hai
+ufficialmente scritto un programma in Rust. Questo ti rende un programmatore
+Rust—benvenuto!
 
-### Anatomy of a Rust Program
+### Anatomia di un Programma Rust
 
 Let’s review this “Hello, world!” program in detail. Here’s the first piece of
 the puzzle:

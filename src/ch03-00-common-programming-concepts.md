@@ -1,23 +1,26 @@
-# Common Programming Concepts
+# Concetti comuni nella programmazione
 
-This chapter covers concepts that appear in almost every programming language
-and how they work in Rust. Many programming languages have much in common at
-their core. None of the concepts presented in this chapter are unique to Rust,
-but we’ll discuss them in the context of Rust and explain the conventions
-around using these concepts.
+Questo capitolo copre concetti che compaiono in quasi ogni linguaggio di
+programmazione e come funzionano in Rust. Molti linguaggi di programmazione
+hanno molto in comune generalmente. Nessuno dei concetti presentati in
+questo capitolo è unico per Rust, ma li discuteremo nel contesto di Rust
+e spiegheremo le convenzioni riguardanti l'uso di questi concetti.
 
-Specifically, you’ll learn about variables, basic types, functions, comments,
-and control flow. These foundations will be in every Rust program, and learning
-them early will give you a strong core to start from.
+Nello specifico, imparerai riguardo le variabili, i tipi di base, le
+funzioni, i commenti e il control flow. Queste basi saranno presenti in
+ogni programma scritto in Rust, e impararli sin dall'inizio ti fornirà
+una solida base da cui partire.
 
 > #### Keywords
 >
-> The Rust language has a set of *keywords* that are reserved for use by the
-> language only, much as in other languages. Keep in mind that you cannot use
-> these words as names of variables or functions. Most of the keywords have
-> special meanings, and you’ll be using them to do various tasks in your Rust
-> programs; a few have no current functionality associated with them but have
-> been reserved for functionality that might be added to Rust in the future. You
-> can find a list of the keywords in [Appendix A][appendix_a]<!-- ignore -->.
+> Rust ha un insieme di *parole chiave* (generalmente chiamate in inglese
+> "keywords") riservate esclusivamente per l'uso del linguaggio, come succede
+> in molti altri linguaggi. Tieni presente che non puoi utilizzare queste
+> parole come nomi di variabili o funzioni. Gran parte delle parole chiave
+> ha significati speciali e le utilizzerai per svolgere varie attività
+> nei tuoi programmi in Rust; ci sono anche alcune parole chiave che non
+> hanno attualmente funzionalità, ma sono state riservate per funzionalità
+> che potrebbero essere aggiunte a Rust in futuro. Puoi trovare un elenco
+> delle parole chiave nell'[Appendice A][appendix_a].
 
 [appendix_a]: appendix-01-keywords.md

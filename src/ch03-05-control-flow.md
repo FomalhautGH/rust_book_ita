@@ -1,199 +1,203 @@
 ## Control Flow
 
-The ability to run some code depending on whether a condition is `true` and to
-run some code repeatedly while a condition is `true` are basic building blocks
-in most programming languages. The most common constructs that let you control
-the flow of execution of Rust code are `if` expressions and loops.
+La capacità di eseguire del codice in base ad una condizione e di eseguire del
+codice ripetutamente finché una condizione è vera sono elementi fondamentali
+nella maggior parte dei linguaggi di programmazione. I costrutti più comuni
+che consentono di controllare il flusso di esecuzione del codice in Rust sono
+le espressioni `if` e i `loop`.
 
-### `if` Expressions
+### Espressioni `if`
 
-An `if` expression allows you to branch your code depending on conditions. You
-provide a condition and then state, “If this condition is met, run this block
-of code. If the condition is not met, do not run this block of code.”
+Un espressione `if` consente di eseguire un blocco di codice in base a delle
+condizioni. Dopo aver specificato una condizione si può dire: “Se questa
+condizione è vera, esegui questo blocco di codice. Se la condizione è falsa,
+non eseguire questo blocco di codice.”
 
-Create a new project called *branches* in your *projects* directory to explore
-the `if` expression. In the *src/main.rs* file, input the following:
+Crea un nuovo progetto chiamato *branches* nella tua directory di progetti per
+esplorare l'espressione if. Nel file *src/main.rs*, inserisci quanto segue:
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-26-if-true/src/main.rs}}
 ```
 
-All `if` expressions start with the keyword `if`, followed by a condition. In
-this case, the condition checks whether or not the variable `number` has a
-value less than 5. We place the block of code to execute if the condition is
-`true` immediately after the condition inside curly brackets. Blocks of code
-associated with the conditions in `if` expressions are sometimes called *arms*,
-just like the arms in `match` expressions that we discussed in the [“Comparing
-the Guess to the Secret Number”][comparing-the-guess-to-the-secret-number]<!--
-ignore --> section of Chapter 2.
+Tutte le espressioni `if` iniziano con la keyword `if`, seguita da una condizione.
+In questo esempio, la condizione controlla se la variabile `number` ha un valore
+inferiore a 5. Subito dopo la condizione, inseriamo il blocco di codice da
+eseguire se la condizione è vera (cioè se da come risultato `true`), racchiuso
+tra parentesi graffe. I blocchi di codice associati alle espressioni `if` vengono
+talvolta chiamati in inglese *arms* cioè bracci, proprio come i bracci nelle
+espressioni match che abbiamo discusso nella sezione [“Confrontare il numero dato
+come risposta al numero segreto”][comparing-the-guess-to-the-secret-number] del
+Capitolo 2.
 
-Optionally, we can also include an `else` expression, which we chose to do
-here, to give the program an alternative block of code to execute should the
-condition evaluate to `false`. If you don’t provide an `else` expression and
-the condition is `false`, the program will just skip the `if` block and move on
-to the next bit of code.
+Opzionalmente, possiamo anche aggiungere un espressione `else`, come abbiamo
+fatto nell'esempio, per fornire al programma un blocco alternativo di codice
+da eseguire se la condizione da come risultato `false`. Se non aggiungi un
+espressione `else` e la condizione è falsa, il programma semplicemente salta
+il blocco di codice associato all'`if` e passa al prossimo pezzo di codice da
+eseguire.
 
-Try running this code; you should see the following output:
+Prova as eseguire questo codice, il risultato sarà questo:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-26-if-true/output.txt}}
 ```
 
-Let’s try changing the value of `number` to a value that makes the condition
-`false` to see what happens:
+Proviamo a cambiare il valore di `number` per fare in modo che la condizione
+risulti in `false` per vedere cosa succede:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-27-if-false/src/main.rs:here}}
 ```
 
-Run the program again, and look at the output:
+Esegui il programma ancora e guarda l'output:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-27-if-false/output.txt}}
 ```
 
-It’s also worth noting that the condition in this code *must* be a `bool`. If
-the condition isn’t a `bool`, we’ll get an error. For example, try running the
-following code:
+È anche importante notare che la condizione in questo codice *deve* essere di tipo
+`bool`. Se la condizione non è di tipo `bool`, otterremo un errore. Prova infatti
+ad eseguire il seguente codice:
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust,ignore,does_not_compile
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-28-if-condition-must-be-bool/src/main.rs}}
 ```
 
-The `if` condition evaluates to a value of `3` this time, and Rust throws an
-error:
+La condizione dell'`if` questa volta varrà `3`, quindi Rust ci darà errore:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-28-if-condition-must-be-bool/output.txt}}
 ```
 
-The error indicates that Rust expected a `bool` but got an integer. Unlike
-languages such as Ruby and JavaScript, Rust will not automatically try to
-convert non-Boolean types to a Boolean. You must be explicit and always provide
-`if` with a Boolean as its condition. If we want the `if` code block to run
-only when a number is not equal to `0`, for example, we can change the `if`
-expression to the following:
+L'errore indica che Rust si aspettava un `bool` ma ha trovato un intero. A differenza
+di linguaggi come Ruby e JavaScript, Rust non proverà implicitamente a convertire tipi
+non booleani in un booleano. Devi essere esplicito e fornire sempre all'espressione
+`if` un valore booleano come condizione. Se vogliamo che il blocco di codice associato
+all'`if` venga eseguito solo quando il numero non è uguale a `0`, possiamo modificare
+l'espressione `if` in questo modo:
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-29-if-not-equal-0/src/main.rs}}
 ```
 
-Running this code will print `number was something other than zero`.
+Eseguire questo codice stamperà `number was something other than zero`.
 
-#### Handling Multiple Conditions with `else if`
+#### Gestire più Condizioni con l'`else if`
 
-You can use multiple conditions by combining `if` and `else` in an `else if`
-expression. For example:
+Puoi usare multiple condizioni combinando gli `if` con gli `else` in una espressione
+`else if`. Per esempio: 
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-30-else-if/src/main.rs}}
 ```
 
-This program has four possible paths it can take. After running it, you should
-see the following output:
+Questo programma ha quattro possibili percorsi. Dopo averlo eseguito, dovresti vedere
+questo output:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-30-else-if/output.txt}}
 ```
 
-When this program executes, it checks each `if` expression in turn and executes
-the first body for which the condition evaluates to `true`. Note that even
-though 6 is divisible by 2, we don’t see the output `number is divisible by 2`,
-nor do we see the `number is not divisible by 4, 3, or 2` text from the `else`
-block. That’s because Rust only executes the block for the first `true`
-condition, and once it finds one, it doesn’t even check the rest.
+Quando questo programma viene eseguito, viene controllata ogni espressione `if`
+in sequenza e viene eseguito solo il primo blocco di codice che soddisfa la
+condizione ed il resto non viene neanche controllato. Nota infatti come
+anche se 6 è divisibile per 2, non vediamo l'output `number is divisible by 2`,
+e neanche `number is not divisible by 4, 3, or 2` del blocco `else`.
 
-Using too many `else if` expressions can clutter your code, so if you have more
-than one, you might want to refactor your code. Chapter 6 describes a powerful
-Rust branching construct called `match` for these cases.
+Utilizzare troppe espressioni `else if` può rendere il codice disordinato,
+quindi se ne hai più di una, potresti voler ristrutturare il codice. Il
+Capitolo 6 spiega un potente costrutto fatto apposta per ciò, chiamato
+`match`.
 
-#### Using `if` in a `let` Statement
+#### Utilizzare l'`if` in uno Statement `let`
 
-Because `if` is an expression, we can use it on the right side of a `let`
-statement to assign the outcome to a variable, as in Listing 3-2.
+Visto che l'`if` è un espressione, la possiamo utilizzare all'interno di uno
+statement `let` nella parte destra per assegnare il valore risultante
+ad una variabile, come nell'esempio 3-2.
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/listing-03-02/src/main.rs}}
 ```
 
-<span class="caption">Listing 3-2: Assigning the result of an `if` expression
-to a variable</span>
+<span class="caption">Voce 3-2: Assegnare il risultato di una espressione `if` ad una
+variabile </span>
 
-The `number` variable will be bound to a value based on the outcome of the `if`
-expression. Run this code to see what happens:
+Alla variabile `number` verrà assegnato un valore che dipende dell'esito dell'
+espressione `if`. Esegui questo codice per vedere cosa succede:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/listing-03-02/output.txt}}
 ```
 
-Remember that blocks of code evaluate to the last expression in them, and
-numbers by themselves are also expressions. In this case, the value of the
-whole `if` expression depends on which block of code executes. This means the
-values that have the potential to be results from each arm of the `if` must be
-the same type; in Listing 3-2, the results of both the `if` arm and the `else`
-arm were `i32` integers. If the types are mismatched, as in the following
-example, we’ll get an error:
+Ricorda che i blocchi di codice ritorneranno l'ultima espressione al loro interno
+e i numeri stessi sono espressioni. In questo caso, il valore dell'intera
+espressione `if` dipende da quale blocco di codice viene eseguito. Ciò significa
+che i valori che possono essere ritornati da ciascun *braccio* dell'`if` devono
+essere dello stesso tipo; nella Voce 3-2 ad esempio, i valori ritornati dal braccio
+dell'`if` e dal braccio dell'`else` sono entrambi `i32`. Se i tipi non corrispondono,
+come nell'esempio seguente, otterremo un errore:
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust,ignore,does_not_compile
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-31-arms-must-return-same-type/src/main.rs}}
 ```
 
-When we try to compile this code, we’ll get an error. The `if` and `else` arms
-have value types that are incompatible, and Rust indicates exactly where to
-find the problem in the program:
+Quando proviamo a compilare questo codice, otterremo un errore. Di fatti, i bracci
+dell'`if` e dell'`else` ritornano valori non compatibili. Rust indicherà esattamente
+dove trovare il problema nel programma:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-31-arms-must-return-same-type/output.txt}}
 ```
 
-The expression in the `if` block evaluates to an integer, and the expression in
-the `else` block evaluates to a string. This won’t work because variables must
-have a single type, and Rust needs to know at compile time what type the
-`number` variable is, definitively. Knowing the type of `number` lets the
-compiler verify the type is valid everywhere we use `number`. Rust wouldn’t be
-able to do that if the type of `number` was only determined at runtime; the
-compiler would be more complex and would make fewer guarantees about the code
-if it had to keep track of multiple hypothetical types for any variable.
+L'espressione ritornata dal blocco `if` è un intero, mentre l'espressione ritornata
+dal blocco `else` è una stringa. Ciò non potrà funzionare perché le variabili devono
+essere di un solo tipo e Rust ha bisogno di conoscere a compile time qual'è il tipo
+esatto per la variabile `number`. Conoscendo il tipo di `number`, il compilatore
+sarà in grado di verificare che il tipo sia valido in tutti i posti in cui
+utilizziamo la variabile `number`. Rust non sarebbe in grado di fare tutto ciò
+se il tipo della variabile `number` fosse determinato solo a runtime; il compilatore
+in quel caso sarebbe soltanto più complesso, lento e farebbe meno garanzie sul
+codice se dovesse tenere traccia di possibili tipi multipli per una variabile.
 
-### Repetition with Loops
+### Ripetizione con i Loop
 
-It’s often useful to execute a block of code more than once. For this task,
-Rust provides several *loops*, which will run through the code inside the loop
-body to the end and then start immediately back at the beginning. To experiment
-with loops, let’s make a new project called *loops*.
+È spesso utile poter eseguire un blocco di codice più di una volta. Per questa cosa,
+Rust fornisce diversi *loop* ("cicli"), che eseguiranno il codice al loro interno
+fino alla fine e dopo ripartiranno immediatamente dall'inizio dello stesso. Per
+sperimentare con i loop, creiamo un nuovo progetto chiamato *loops*.
 
-Rust has three kinds of loops: `loop`, `while`, and `for`. Let’s try each one.
+Rust ha ben tre tipi di loop: `loop`, `while` e `for`. Proviamoli uno per uno.
 
-#### Repeating Code with `loop`
+#### Ripetere il codice con `loop`
 
-The `loop` keyword tells Rust to execute a block of code over and over again
-forever or until you explicitly tell it to stop.
+La keyword `loop` dice a Rust di eseguire un blocco di codice più e più volte all'infinito
+fino a quando non gli dici esplicitamente di fermarsi.
 
-As an example, change the *src/main.rs* file in your *loops* directory to look
-like this:
+Come esempio, modifica il file *src/main.rs* nella tua cartella *loops* in questo modo:
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-32-loop/src/main.rs}}
 ```
 
-When we run this program, we’ll see `again!` printed over and over continuously
-until we stop the program manually. Most terminals support the keyboard
-shortcut <span class="keystroke">ctrl-c</span> to interrupt a program that is
-stuck in a continual loop. Give it a try:
+Quando eseguiamo questo programma, vedremo stampare continuamente `again!` fino a quando
+non chiudiamo il processo manualmente. La maggior parte dei terminali supporta la shortcut
+<span class="keystroke">ctrl-c</span> per interrompere un programma che è bloccato in un
+loop costante. Provaci:
 
 <!-- manual-regeneration
 cd listings/ch03-common-programming-concepts/no-listing-32-loop
@@ -213,177 +217,182 @@ again!
 ^Cagain!
 ```
 
-The symbol `^C` represents where you pressed <span
-class="keystroke">ctrl-c</span>. You may or may not see the word `again!`
-printed after the `^C`, depending on where the code was in the loop when it
-received the interrupt signal.
+Il simbolo `^C` rappresenta dove hai premuto <span class="keystroke">ctrl-c</span>.
+Potresti o meno vedere la parola `again!` stampata anche dopo il `^C`, ciò dipende
+su dov'era il codice che stava venendo eseguito nel loop quando ha ricevuto il
+segnale di interrompersi.
 
-Fortunately, Rust also provides a way to break out of a loop using code. You
-can place the `break` keyword within the loop to tell the program when to stop
-executing the loop. Recall that we did this in the guessing game in the
-[“Quitting After a Correct Guess”][quitting-after-a-correct-guess]<!-- ignore
---> section of Chapter 2 to exit the program when the user won the game by
-guessing the correct number.
+Ovviamente, Rust ti permette di uscire da un ciclo utilizzando del codice. Puoi
+piazzare la keyword `break` all'interno del loop per dire al programma quando
+fermare l'esecuzione del loop. Ricorda che lo abbiamo fatto anche nel guessing
+game nella sezione [“Quittare dopo la Risposta Corretta”][quitting-after-a-correct-guess]
+del Capitolo 2 per uscire dal programma quando l'utente vince indovinando il
+numero corretto.
 
-We also used `continue` in the guessing game, which in a loop tells the program
-to skip over any remaining code in this iteration of the loop and go to the
-next iteration.
+Abbiamo anche utilizzato la keyword `continue` nel guessing game, che all'interno
+di un loop dice di skippare tutto il codice rimanente e passare subito alla
+prossima iterazione.
 
-#### Returning Values from Loops
+#### Ritornare valori da un loop
 
-One of the uses of a `loop` is to retry an operation you know might fail, such
-as checking whether a thread has completed its job. You might also need to pass
-the result of that operation out of the loop to the rest of your code. To do
-this, you can add the value you want returned after the `break` expression you
-use to stop the loop; that value will be returned out of the loop so you can
-use it, as shown here:
+Uno degli utilizzi di un `loop` è quello di ripetere un'operazione che potrebbe fallire,
+come ad esempio controllare se un thread ha completato il suo lavoro o meno.
+Potresti anche avere la necessità di passare il risultato di quell'operazione
+al di fuori del loop per il resto del tuo codice. Per fare ciò, puoi aggiungere
+il valore che desideri ritornare dopo l'espressione `break` che interrompe il loop
+ritornando quel valore in modo che tu possa utilizzarlo, come
+mostrato qui:
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-33-return-value-from-loop/src/main.rs}}
 ```
 
-Before the loop, we declare a variable named `counter` and initialize it to
-`0`. Then we declare a variable named `result` to hold the value returned from
-the loop. On every iteration of the loop, we add `1` to the `counter` variable,
-and then check whether the `counter` is equal to `10`. When it is, we use the
-`break` keyword with the value `counter * 2`. After the loop, we use a
-semicolon to end the statement that assigns the value to `result`. Finally, we
-print the value in `result`, which in this case is `20`.
+Prima del loop, dichiariamo una variabile chiamata `counter` e la inizializziamo
+a `0`. Successivamente dichiariamo una variabile chiamata `result` per contenere il
+valore restituito dal loop. Ad ogni iterazione del loop, incrementiamo di `1` la
+variabile `counter` e poi controlliamo se `counter` è uguale a `10`. Quando lo è,
+utilizziamo la parola chiave `break` seguita dal valore `counter * 2`. Dopo il loop,
+utilizziamo un punto e virgola per terminare lo statement che assegna il valore
+a `result`. Infine, stampiamo il valore di `result`, che in questo caso sarà `20`.
 
-#### Loop Labels to Disambiguate Between Multiple Loops
+#### "Etichette" dei Loop per disambiguare tra più Loop
 
-If you have loops within loops, `break` and `continue` apply to the innermost
-loop at that point. You can optionally specify a *loop label* on a loop that
-you can then use with `break` or `continue` to specify that those keywords
-apply to the labeled loop instead of the innermost loop. Loop labels must begin
-with a single quote. Here’s an example with two nested loops:
+Se hai dei loop annidati in altri loop, `break` e `continue` vengono applicati al loop
+più interno. Puoi opzionalmente specificare una *etichetta* (in inglese "label") su
+un loop in modo che potrai utilizzare le keyword `break` e `continue` specificatamente
+su quel loop invece che sul loop più interno. I nomi delle etichette devono iniziare
+con un apostrofo. Ecco un esempio con due loop annidati:
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-32-5-loop-labels/src/main.rs}}
 ```
 
-The outer loop has the label `'counting_up`, and it will count up from 0 to 2.
-The inner loop without a label counts down from 10 to 9. The first `break` that
-doesn’t specify a label will exit the inner loop only. The `break
-'counting_up;` statement will exit the outer loop. This code prints:
+Il loop esterno ha l'etichetta `'counting loop`, e contera da 0 fino a 2. Il loop più
+interno senza etichetta conta alla rovescia da 10 a 9. Il primo `break` che non specifica
+alcuna etichetta fermerà soltanto il loop più interno. Invece lo statement `break 'counting loop;`
+fermerà il loop esterno. Questo codice stampa:
 
 ```console
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-32-5-loop-labels/output.txt}}
 ```
 
-#### Conditional Loops with `while`
+#### Cicli Condizionali con il `while`
 
-A program will often need to evaluate a condition within a loop. While the
-condition is `true`, the loop runs. When the condition ceases to be `true`, the
-program calls `break`, stopping the loop. It’s possible to implement behavior
-like this using a combination of `loop`, `if`, `else`, and `break`; you could
-try that now in a program, if you’d like. However, this pattern is so common
-that Rust has a built-in language construct for it, called a `while` loop. In
-Listing 3-3, we use `while` to loop the program three times, counting down each
-time, and then, after the loop, print a message and exit.
+Spesso un programma ha bisogno di verificare una condizione all'interno di
+un loop. Finché la condizione è vera, il loop continua. Quando la condizione
+diventa falsa, il programma usa `break`, interrompendo il loop. È possibile
+implementare questo comportamento utilizzando una combinazione di `loop`,
+`if`, `else` e `break`; se vuoi, puoi provare a farlo ora in un programma.
+Tuttavia, questo pattern è così comune che Rust ha un costrutto integrato
+per questo scopo, chiamato ciclo `while`. Nella Voce 3-3, utilizziamo il
+`while` per eseguire un pezzo di codice tre volte, contando alla rovescia
+ogni volta, e poi, dopo il loop, stampiamo un messaggio ed usciamo.
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/listing-03-03/src/main.rs}}
 ```
 
-<span class="caption">Listing 3-3: Using a `while` loop to run code while a
-condition holds true</span>
+<span class="caption">Voce 3-3: Utilizzare un ciclo `while` per eseguire
+del codice finchè una condizione è vera</span>
 
-This construct eliminates a lot of nesting that would be necessary if you used
-`loop`, `if`, `else`, and `break`, and it’s clearer. While a condition
-evaluates to `true`, the code runs; otherwise, it exits the loop.
+Questo cotrutto elimina molto annidamento che risulterebbe necessario se si
+utilizzassero `loop`, `if`, `else` e `break`. In poche parole se la condizione è vera
+il loop continua; altrimenti smette.
 
-#### Looping Through a Collection with `for`
+#### Iterare attraverso una Collezione con il `for`
 
-You can choose to use the `while` construct to loop over the elements of a
-collection, such as an array. For example, the loop in Listing 3-4 prints each
-element in the array `a`.
+Volendo puoi utilizzare il `while` per iterare attraverso degli elementi di una
+collezione di dati, come ad esempio un array. Ad esempio, il loop nella Voce 3-4
+stampa ogni elemento dell'array `a`.
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/listing-03-04/src/main.rs}}
 ```
 
-<span class="caption">Listing 3-4: Looping through each element of a collection
-using a `while` loop</span>
+<span class="caption">Voce 3-4: Iterare attraverso gli elementi di una collezione
+di dati usando un ciclo `while`</span>
 
-Here, the code counts up through the elements in the array. It starts at index
-`0`, and then loops until it reaches the final index in the array (that is,
-when `index < 5` is no longer `true`). Running this code will print every
-element in the array:
+Qui, il codice "conta" attraverso gli elementi dell'array. Inizia dall'indice `0`
+e continua a iterare fino a quando non raggiunge l'ultimo indice dell'array (ovvero
+fino a quando la condizione `index < 5` non è più vera). Eseguendo questo codice
+verranno stampati tutti gli elementi dell'array:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/listing-03-04/output.txt}}
 ```
 
-All five array values appear in the terminal, as expected. Even though `index`
-will reach a value of `5` at some point, the loop stops executing before trying
-to fetch a sixth value from the array.
+Tutti e cinque i valori dell'array vengono stampati nel terminale, come previsto.
+Anche se la variabile `index` raggiungerà eventualmente il valore `5`, il ciclo
+infatti si interromperà prima di cercare stampare un sesto valore dall'array.
 
-However, this approach is error prone; we could cause the program to panic if
-the index value or test condition is incorrect. For example, if you changed the
-definition of the `a` array to have four elements but forgot to update the
-condition to `while index < 4`, the code would panic. It’s also slow, because
-the compiler adds runtime code to perform the conditional check of whether the
-index is within the bounds of the array on every iteration through the loop.
+Tuttavia, questo approccio è error prone; potremmo far panicare il programma se
+il valore dell'indice o la condizione non sono corretti. Ad esempio, se si
+cambiasse la definizione dell'array `a` in modo che abbia quattro elementi ma
+ci si dimentica di aggiornare anche la condizione a `while index < 4`, il codice
+panicherà. Inoltre, questo approccio è meno performante perché il compilatore
+aggiunge del codice a runtime per verificare se l'indice si trova all'interno
+dei limiti dell'array ad ogni iterazione del loop.
 
-As a more concise alternative, you can use a `for` loop and execute some code
-for each item in a collection. A `for` loop looks like the code in Listing 3-5.
+Come alternativa più concisa, è possibile utilizzare un ciclo `for` per eseguire
+del codice per ogni elemento di una collezione di dati. Un ciclo `for` è mostrato
+ad esempio nella Voce 3-5.
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/listing-03-05/src/main.rs}}
 ```
 
-<span class="caption">Listing 3-5: Looping through each element of a collection
-using a `for` loop</span>
+<span class="caption">Voce 3-5: Iterare attraverso ogni elemento di una collezione
+di dati con il ciclo `for`</span>
 
-When we run this code, we’ll see the same output as in Listing 3-4. More
-importantly, we’ve now increased the safety of the code and eliminated the
-chance of bugs that might result from going beyond the end of the array or not
-going far enough and missing some items.
+Quando eseguiamo questo codice, vedremo lo stesso output della Voce 3-4. Ma
+più importante, abbiamo anche aumentato la sicurezza del codice ed eliminato
+la possibilità di errori che potrebbero derivare dal superare la fine dell'array
+o dal fermarsi prima e perdere alcuni elementi.
 
-Using the `for` loop, you wouldn’t need to remember to change any other code if
-you changed the number of values in the array, as you would with the method
-used in Listing 3-4.
+Utilizzando il ciclo `for`, non dovremmo ricordarci sempre di modificare del
+codice se cambiamo il numero di valori presenti nell'array, come invece
+sarebbe necessario nel metodo utilizzato nella Voce 3-4.
 
-The safety and conciseness of `for` loops make them the most commonly used loop
-construct in Rust. Even in situations in which you want to run some code a
-certain number of times, as in the countdown example that used a `while` loop
-in Listing 3-3, most Rustaceans would use a `for` loop. The way to do that
-would be to use a `Range`, provided by the standard library, which generates
-all numbers in sequence starting from one number and ending before another
-number.
+La sicurezza e la concisione dei cicli `for` li rendono il costrutto ciclico
+più comunemente utilizzato in Rust. Anche in situazioni in cui si desidera
+eseguire del codice un certo numero di volte, come nell'esempio del conto
+alla rovescia che utilizzava un ciclo `while` nella Voce 3-3, la maggior parte
+dei Rustaceans utilizzerebbe un ciclo `for`. Il modo per farlo sarebbe quello
+di utilizzare un `Range`, fornito dalla libreria standard, che genera tutti
+i numeri in sequenza a partire da un numero e termina prima di un altro numero.
 
-Here’s what the countdown would look like using a `for` loop and another method
-we’ve not yet talked about, `rev`, to reverse the range:
+Ecco come sarebbe diventato il conto alla rovescia utilizzando un ciclo
+`for` e un altro metodo di cui non abbiamo ancora discusso, `rev`, per
+invertire il range.
 
-<span class="filename">Filename: src/main.rs</span>
+<span class="filename">Nome file: src/main.rs</span>
 
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-34-for-range/src/main.rs}}
 ```
 
-This code is a bit nicer, isn’t it?
+Questo codice è un più carino, non è vero?
 
-## Summary
+## Riepilogo
 
-You made it! This was a sizable chapter: you learned about variables, scalar
-and compound data types, functions, comments, `if` expressions, and loops! To
-practice with the concepts discussed in this chapter, try building programs to
-do the following:
+Ci sei riuscito! Questo era un capitolo bello grosso. Hai imparato le variabili,
+dati singoli, dati composti, tipi, funzioni, commenti, espressioni `if` e cicli!
+Per allenarti con i concetti discussi in questo capitolo, prova a scrivere dei
+programmi che fanno ciò:
 
-* Convert temperatures between Fahrenheit and Celsius.
-* Generate the *n*th Fibonacci number.
-* Print the lyrics to the Christmas carol “The Twelve Days of Christmas,”
-  taking advantage of the repetition in the song.
+* Un convertitore tra Fahrenheit e Celsius
+* Un generatore del numero *n* nella serie di Fibonacci.
+* Un programma che stampa le lyrics del canto natalizio “The Twelve Days of Christmas”,
+  avvantaggiandosi del fatto che c'è molta ripetizione nella canzone.
 
-When you’re ready to move on, we’ll talk about a concept in Rust that *doesn’t*
-commonly exist in other programming languages: ownership.
+Quando sei pronto ad andare avanti, parleremo di un concetto in Rust che *non* esiste
+normalmente in altri linguaggi: l'ownership.
 
 [comparing-the-guess-to-the-secret-number]:
 ch02-00-guessing-game-tutorial.html#comparing-the-guess-to-the-secret-number
