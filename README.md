@@ -1,30 +1,35 @@
-# The Rust Programming Language
+# Il Linguaggio di Programmazione Rust
 
 ![Build Status](https://github.com/rust-lang/book/workflows/CI/badge.svg)
 
-This repository contains the source of "The Rust Programming Language" book.
+Questa repository contiene il codice sorgente del libro "The Rust Programming Language"
+in italiano.
 
-[The book is available in dead-tree form from No Starch Press][nostarch].
+[Il libro è disponibile cartaceo da No Starch Press.][nostarch].
 
 [nostarch]: https://nostarch.com/rust-programming-language-2nd-edition
 
-You can also read the book for free online. Please see the book as shipped with
-the latest [stable], [beta], or [nightly] Rust releases. Be aware that issues
-in those versions may have been fixed in this repository already, as those
-releases are updated less frequently.
+Puoi anche leggere il libro gratuitamente online. Per favore consulta il
+libro fornito con le ultime versioni [stabili][stable], [beta] o [nightly]
+di Rust. Tieni presente che eventuali problemi in quelle versioni potrebbero
+essere già stati risolti in questa repository, poiché tali rilasci vengono
+aggiornati con meno frequenza.
 
 [stable]: https://doc.rust-lang.org/stable/book/
 [beta]: https://doc.rust-lang.org/beta/book/
 [nightly]: https://doc.rust-lang.org/nightly/book/
 
-See the [releases] to download just the code of all the code listings that appear in the book.
+Leggi [releases] per scaricare solo il codice di tutti gli esempi che
+sono presenti nel libro.
 
 [releases]: https://github.com/rust-lang/book/releases
 
 ## Requirements
 
-Building the book requires [mdBook], ideally the same version that
-rust-lang/rust uses in [this file][rust-mdbook]. To get it:
+"Costruire" (cioè renderlo in formato HTML) il libro richiede
+[mdBook], idealmente della stessa
+versione utilizzata da rust-lang/rust in [questo file][rust-mdbook].
+Per ottenerlo:
 
 [mdBook]: https://github.com/rust-lang-nursery/mdBook
 [rust-mdbook]: https://github.com/rust-lang/rust/blob/master/src/tools/rustbook/Cargo.toml
@@ -35,14 +40,14 @@ $ cargo install mdbook --version <version_num>
 
 ## Building
 
-To build the book, type:
+Per costruire il libro, scrivi:
 
 ```bash
 $ mdbook build
 ```
 
-The output will be in the `book` subdirectory. To check it out, open it in
-your web browser.
+L'output verrà messo nella sottocartella `book`. Per vederlo, aprilo
+nel browser.
 
 _Firefox:_
 ```bash
@@ -60,46 +65,34 @@ $ Start-Process "chrome.exe" .\book\index.html  # Windows (PowerShell)
 $ start chrome.exe .\book\index.html            # Windows (Cmd)
 ```
 
-To run the tests:
+Per eseguire i test:
 
 ```bash
 $ mdbook test
 ```
 
-## Contributing
+## Contribuire
 
-We'd love your help! Please see [CONTRIBUTING.md][contrib] to learn about the
-kinds of contributions we're looking for.
+Se vuoi contribuire ci piacerebbe molto ricevere il tuo aiuto! Consulta
+[CONTRIBUTING.md][contrib] per conoscere i tipi di contributi che stiamo
+cercando.
 
 [contrib]: https://github.com/rust-lang/book/blob/main/CONTRIBUTING.md
 
-Because the book is [printed][nostarch], and because we want
-to keep the online version of the book close to the print version when
-possible, it may take longer than you're used to for us to address your issue
-or pull request.
+Poiché il libro esiste anche in formato [cartaceo][nostarch] e desideriamo
+mantenere la versione online del libro il più possibile vicina alla
+versione caratcea, potrebbe volerci più tempo del solito per risolvere
+il tuo problema o accettare la tua pull request.
 
-So far, we've been doing a larger revision to coincide with [Rust
-Editions](https://doc.rust-lang.org/edition-guide/). Between those larger
-revisions, we will only be correcting errors. If your issue or pull request
-isn't strictly fixing an error, it might sit until the next time that we're
-working on a large revision: expect on the order of months or years. Thank you
-for your patience!
+Finora, abbiamo fatto un'ampia revisione per coincidere con le [Edizioni di Rust](https://doc.rust-lang.org/edition-guide/). Tra queste ampie revisioni, correggeremo solo gli errori. Se il tuo problema o la tua pull request non riguardano strettamente la correzione di un errore, potrebbe essere affrontato solo alla prossima grande revisione: con tempi nell'ordine di mesi o anni. Grazie per la tua pazienza!
 
-### Translations
+### Traduzioni
 
-We'd love help translating the book! See the [Translations] label to join in
-efforts that are currently in progress. Open a new issue to start working on
-a new language! We're waiting on [mdbook support] for multiple languages
-before we merge any in, but feel free to start!
+Questa è la traduzione non ufficiale italiana del libro, ovviamente ci sono molte
+altre [Traduzioni] in corso. Per maggiori informazioni su come fare ad aggiungere
+una nuova lingua consulta la versione originale del libro. Al momento si sta
+aspettando di avere il [supporto mdbook] prima di poter unirne qualcuna, ma
+sentiti libero di iniziare!.
 
 [Translations]: https://github.com/rust-lang/book/issues?q=is%3Aopen+is%3Aissue+label%3ATranslations
 [mdbook support]: https://github.com/rust-lang-nursery/mdBook/issues/5
-
-## Spellchecking
-
-To scan source files for spelling errors, you can use the `spellcheck.sh`
-script available in the `ci` directory. It needs a dictionary of valid words,
-which is provided in `ci/dictionary.txt`. If the script produces a false
-positive (say, you used word `BTreeMap` which the script considers invalid),
-you need to add this word to `ci/dictionary.txt` (keep the sorted order for
-consistency).
