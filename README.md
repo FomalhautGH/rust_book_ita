@@ -24,7 +24,7 @@ sono presenti nel libro.
 
 [releases]: https://github.com/rust-lang/book/releases
 
-## Requirements
+## Requisiti
 
 "Costruire" (cioè renderlo in formato HTML) il libro richiede
 [mdBook], idealmente della stessa
@@ -38,7 +38,7 @@ Per ottenerlo:
 $ cargo install mdbook --version <version_num>
 ```
 
-## Building
+## Costruire
 
 Per costruire il libro, scrivi:
 
@@ -89,9 +89,9 @@ Finora, abbiamo fatto un'ampia revisione per coincidere con le [Edizioni di Rust
 ### Traduzioni
 
 Questa è la traduzione non ufficiale italiana del libro, ovviamente ci sono molte
-altre [Traduzioni] in corso. Per maggiori informazioni su come fare ad aggiungere
+altre [Traduzioni][Translations] in corso. Per maggiori informazioni su come fare ad aggiungere
 una nuova lingua consulta la versione originale del libro. Al momento si sta
-aspettando di avere il [supporto mdbook] prima di poter unirne qualcuna, ma
+aspettando di avere il [supporto mdbook][mdbook support] prima di poter unirne qualcuna, ma
 sentiti libero di iniziare!.
 
 [Translations]: https://github.com/rust-lang/book/issues?q=is%3Aopen+is%3Aissue+label%3ATranslations
